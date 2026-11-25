@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personalized Meditation and Mindfulness</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="authScreen" class="auth-screen">
+        <div class="auth-card">
+            <div class="brand-mark">✦</div>
+            <p class="eyebrow">MINDFULNESS • WELL-BEING</p>
+            <h1>Personalized Meditation<br>and Mindfulness</h1>
+            <p class="muted auth-intro">Create a little space for calm, focus and balance.</p>
+
+            <div class="auth-tabs">
+                <button id="showLogin" class="tab active" type="button">Login</button>
+                <button id="showRegister" class="tab" type="button">Create account</button>
+            </div>
+
+            <form id="loginForm" class="auth-form">
+                <label for="loginEmail">Email address</label>
+                <input id="loginEmail" type="email" placeholder="you@example.com" required>
+                <label for="loginPassword">Password</label>
+                <input id="loginPassword" type="password" placeholder="Enter your password" required>
+                <button class="button primary full" type="submit">Login to your space</button>
+                <p id="loginMessage" class="form-message"></p>
+            </form>
+
+            <form id="registerForm" class="auth-form hidden">
+                <label for="registerName">Full name</label>
+                <input id="registerName" type="text" placeholder="Your name" required minlength="2">
+                <label for="registerEmail">Email address</label>
+                <input id="registerEmail" type="email" placeholder="you@example.com" required>
+                <label for="registerPassword">Password</label>
+                <input id="registerPassword" type="password" placeholder="At least 6 characters" required minlength="6">
+                <button class="button primary full" type="submit">Create account</button>
+                <p id="registerMessage" class="form-message"></p>
+            </form>
+            <p class="auth-note">Demo project • Your data is stored in this browser.</p>
+        </div>
+    </div>
+
+    <div id="appScreen" class="app-screen hidden">
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <span class="brand-mark small">✦</span>
+                <div>
+                    <strong>Mindfulness</strong>
+                    <small>Personal wellness space</small>
+                </div>
+            </div>
+            <nav class="side-nav">
+                <button class="nav-link active" data-view="dashboard">▦ <span>Dashboard</span></button>
+                <button class="nav-link" data-view="sessions">◷ <span>My sessions</span></button>
+                <button class="nav-link" data-view="plans">▤ <span>Schedules & plans</span></button>
+                <button class="nav-link" data-view="history">↗ <span>Progress & history</span></button>
+                <button class="nav-link" data-view="profile">○ <span>My profile</span></button>
+                <button id="adminNav" class="nav-link hidden" data-view="admin">⚙ <span>Admin panel</span></button>
+            </nav>
+            <div class="sidebar-bottom">
+                <div class="side-tip">
+                    <span>✧</span>
+                    <p>Small moments of calm can make a meaningful difference.</p>
+                </div>
+                <button id="logoutButton" class="nav-link logout">↪ <span>Log out</span></button>
+            </div>
+        </aside>
+
+        <main class="main-area">
+            <header class="topbar">
+                <div>
+                    <p class="eyebrow">YOUR PERSONAL WELLNESS SPACE</p>
+                    <h2 id="pageTitle">Dashboard</h2>
+                </div>
+                <div class="top-user">
+                    <div class="avatar" id="topAvatar">U</div>
+                    <div><strong id="topName">User</strong><small id="topRole">Member</small></div>
+                </div>
+            </header>
+
+            <section id="dashboardView" class="view">
+                <div class="welcome-panel">
+                    <div>
+                        <p class="eyebrow light">A MOMENT FOR YOURSELF</p>
+                        <h1 id="welcomeText">Welcome back.</h1>
+                        <p>Make today a little calmer, one session at a time.</p>
+                        <button class="button light-button" data-go="sessions">Explore my sessions</button>
+                    </div>
+                    <div class="welcome-art" aria-hidden="true"><span>☼</span><i></i></div>
+                </div>
+                <div class="section-heading">
+                    <div><p class="eyebrow">YOUR OVERVIEW</p><h3>A mindful check-in</h3></div>
+                </div>
+                <div class="stats-grid">
+                    <article class="stat-card"><span class="stat-icon">◷</span><p>Total sessions</p><strong id="totalSessions">0</strong><small>Sessions created</small></article>
+                    <article class="stat-card"><span class="stat-icon">✓</span><p>Completed</p><strong id="completedSessions">0</strong><small>Marked as complete</small></article>
+                    <article class="stat-card"><span class="stat-icon">▤</span><p>Active plans</p><strong id="activePlans">0</strong><small>Current schedules</small></article>
+                    <article class="stat-card"><span class="stat-icon">⌁</span><p>Minutes practiced</p><strong id="totalMinutes">0</strong><small>From completed sessions</small></article>
+                </div>
+                <div class="content-grid">
+                    <article class="panel">
+                        <div class="panel-heading"><div><p class="eyebrow">GET STARTED</p><h3>Your next mindful step</h3></div></div>
+                        <p class="muted">Create a meditation session, set a schedule, and update its status as you make progress.</p>
+                        <div class="quick-actions">
+                            <button class="button primary" data-go="sessions">＋ Add a session</button>
+                            <button class="button secondary" data-go="plans">＋ Create a plan</button>
+                        </div>
+                    </article>
+                    <article class="panel quote-panel">
+                        <span class="quote-mark">“</span>
+                        <h3>Pause. Breathe. Begin again.</h3>
+                        <p class="muted">Progress is built through small, consistent moments.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section id="sessionsView" class="view hidden">
+                <div class="section-heading row-heading">
+                    <div><p class="eyebrow">YOUR PRACTICE</p><h3>Manage meditation sessions</h3></div>
+                    <button id="addSessionButton" class="button primary">＋ Add session</button>
+                </div>
+                <div class="toolbar">
+                    <input id="sessionSearch" type="search" placeholder="Search sessions...">
+                    <select id="sessionFilter"><option value="all">All statuses</option><option value="Pending">Pending</option><option value="Completed">Completed</option></select>
+                </div>
+                <div id="sessionList" class="card-list"></div>
+            </section>
+
+            <section id="plansView" class="view hidden">
+                <div class="section-heading row-heading">
+                    <div><p class="eyebrow">STAY CONSISTENT</p><h3>Schedules and plans</h3></div>
+                    <button id="addPlanButton" class="button primary">＋ Add plan</button>
+                </div>
+                <div id="planList" class="card-list"></div>
+            </section>
+
+            <section id="historyView" class="view hidden">
+                <div class="section-heading"><p class="eyebrow">YOUR JOURNEY</p><h3>Progress and history</h3></div>
+                <div class="stats-grid history-stats">
+                    <article class="stat-card"><p>Completed sessions</p><strong id="historyCompleted">0</strong></article>
+                    <article class="stat-card"><p>Total practice time</p><strong id="historyMinutes">0 min</strong></article>
+                </div>
+                <div class="panel">
+                    <div class="panel-heading"><div><p class="eyebrow">ACTIVITY RECORD</p><h3>Session history</h3></div></div>
+                    <div id="historyList" class="history-list"></div>
+                </div>
+            </section>
+
+            <section id="profileView" class="view hidden">
+                <div class="section-heading"><p class="eyebrow">YOUR DETAILS</p><h3>Profile management</h3></div>
+                <form id="profileForm" class="panel form-panel">
+                    <label for="profileName">Full name</label>
+                    <input id="profileName" type="text" required minlength="2">
+                    <label for="profileEmail">Email address</label>
+                    <input id="profileEmail" type="email" disabled>
+                    <label for="profileGoal">Personal mindfulness goal</label>
+                    <textarea id="profileGoal" rows="3" placeholder="Example: Practice for 10 minutes each day"></textarea>
+                    <button class="button primary" type="submit">Save profile</button>
+                    <p id="profileMessage" class="form-message"></p>
+                </form>
+            </section>
+
+            <section id="adminView" class="view hidden">
+                <div class="section-heading"><p class="eyebrow">STAFF / ADMIN</p><h3>Admin dashboard</h3></div>
+                <div class="stats-grid">
+                    <article class="stat-card"><p>Registered users</p><strong id="adminUsers">0</strong></article>
+                    <article class="stat-card"><p>All sessions</p><strong id="adminSessions">0</strong></article>
+                    <article class="stat-card"><p>All plans</p><strong id="adminPlans">0</strong></article>
+                </div>
+                <div class="panel"><div class="panel-heading"><div><p class="eyebrow">USER RECORDS</p><h3>Registered members</h3></div></div><div id="adminUserList" class="history-list"></div></div>
+            </section>
+        </main>
+    </div>
+
+    <div id="sessionModal" class="modal hidden">
+        <div class="modal-card">
+            <div class="modal-heading"><div><p class="eyebrow">SESSION DETAILS</p><h3 id="sessionModalTitle">Add a session</h3></div><button class="close-button" data-close="sessionModal" type="button">×</button></div>
+            <form id="sessionForm">
+                <input id="sessionId" type="hidden">
+                <label for="sessionName">Session name</label><input id="sessionName" required maxlength="60" placeholder="Example: Morning calm">
+                <label for="sessionCategory">Category</label>
+                <select id="sessionCategory"><option>Breathing</option><option>Focus</option><option>Relaxation</option><option>Mindfulness</option><option>Sleep</option></select>
+                <div class="two-fields">
+                    <div><label for="sessionDuration">Duration (minutes)</label><input id="sessionDuration" type="number" min="1" max="180" required></div>
+                    <div><label for="sessionDate">Date</label><input id="sessionDate" type="date" required></div>
+                </div>
+                <label for="sessionNotes">Notes</label><textarea id="sessionNotes" rows="3" placeholder="Add a short note (optional)"></textarea>
+                <button class="button primary full" type="submit">Save session</button>
+                <p id="sessionMessage" class="form-message"></p>
+            </form>
+        </div>
+    </div>
+
+    <div id="planModal" class="modal hidden">
+        <div class="modal-card">
+            <div class="modal-heading"><div><p class="eyebrow">YOUR ROUTINE</p><h3 id="planModalTitle">Create a plan</h3></div><button class="close-button" data-close="planModal" type="button">×</button></div>
+            <form id="planForm">
+                <input id="planId" type="hidden">
+                <label for="planName">Plan name</label><input id="planName" required maxlength="60" placeholder="Example: 7-day calm routine">
+                <label for="planFrequency">Frequency</label><select id="planFrequency"><option>Daily</option><option>Weekdays</option><option>Weekly</option></select>
+                <div class="two-fields">
+                    <div><label for="planStart">Start date</label><input id="planStart" type="date" required></div>
+                    <div><label for="planEnd">End date</label><input id="planEnd" type="date" required></div>
+                </div>
+                <button class="button primary full" type="submit">Save plan</button>
+                <p id="planMessage" class="form-message"></p>
+            </form>
+        </div>
+    </div>
+
+    <div id="toast" class="toast"></div>
+    <script src="js/app.js"></script>
+</body>
+</html>
